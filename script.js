@@ -1,5 +1,6 @@
 const convert = document.getElementById('convert-btn');
 const reset = document.getElementById('reset-btn');
+// const add = document.getElementById('add-btn');
 const gradeRow = document.querySelector('.grade-row');
 const row = document.querySelector('.row');
 const univ = document.getElementById('univ-type');
@@ -8,10 +9,13 @@ let numbers = document.getElementById('course-numbers');
 let gradeType = '';
 const radioBtns = document.querySelectorAll('input[name="grade-type"]');
 
+
+row.innerHTML = '';
+
 univ.addEventListener('change', () => {
     const univType = document.getElementById('univ-type').value;
     if (univType == "37" || univType == "47"){
-        document.querySelector(".grade-choice").style.display = "initial";
+        document.querySelector(".grade-choice").className = "grade-choice-visible";
     }
     else if (univType == "3" || univType== "6"){
         document.querySelector(".type-output").innerHTML = "Enter Percentage(%) Grade";
@@ -24,7 +28,8 @@ univ.addEventListener('change', () => {
 
 numbers.addEventListener('change', () => {
     const coursesTaken = numbers.value;
-    for (let i = 0; i < coursesTaken -1 ; i++){
+    row.innerHTML = '';
+    for (let i = 0; i < coursesTaken; i++){
         row.innerHTML += '<div class="grade-row">' + gradeRow.innerHTML + '</div>';
     }
     numbers.disabled = true;
@@ -282,13 +287,13 @@ convert.addEventListener('click', function(){
 reset.addEventListener('click', function(){
     document.querySelector(".type-output").innerHTML = '';
     univ.value = "none";
-    numbers.value = "1";
+    numbers.value = "none";
     gradeType = '';
     for (const radiobtn of radioBtns){
         radiobtn.checked = false;
     }
     row.innerHTML = '';
-    row.innerHTML += '<div class="grade-row">' + gradeRow.innerHTML + '</div>';
+    document.querySelector(".grade-choice-visible").className = "grade-choice";
     document.getElementById('output').innerHTML = '';
     univ.disabled = false;
     numbers.disabled = false;

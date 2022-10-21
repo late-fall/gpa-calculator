@@ -1,5 +1,6 @@
 html {
     height: 100%;
+    text-align: center;
 }
 body{
     background: linear-gradient(to right, #05386B, #18426d);
@@ -21,6 +22,7 @@ body{
     box-shadow: rgb(47, 100, 156) 0px 20px 30px -10px;
     line-height: 45px;
     font-size: 28px;
+    min-width: 360px;
 }
 
 input{
@@ -36,14 +38,20 @@ select{
 select:focus {
     background-color: #265077;
 }
-#convert-btn,  #add-btn, #reset-btn{
+#univ-type{
+    margin-bottom: 20px;
+}
+#convert-btn, #reset-btn{
     color: white;
     padding: 12px;
     border: 1px solid white;
     background: none;
     cursor: pointer;
+    width: 120px;
+    font-size: 20px;
+    font-weight: 700;
 }
-#convert-btn:hover,  #add-btn:hover, #reset-btn:hover{
+#convert-btn:hover, #reset-btn:hover{
     background-color: #265077;
 }
 #convert-btn:active,  #add-btn:active, #reset-btn:active {
@@ -59,10 +67,16 @@ select:focus {
 }
 .grade-row {
     display: flex;
-    margin-top: 12px;
+    margin-bottom: 15px;
 }
 .grade-choice {
     display: none;
+}
+.grade-choice-visible {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 select {
   background-color: #1E4258;
@@ -90,7 +104,7 @@ select option {
 .buttons {
     display: flex;
     justify-content:space-between;
-    margin-top: 15px;;
+    gap: 20px;
 }
 input[type="radio"]{
     display: none;
@@ -99,14 +113,23 @@ input[type="radio"]{
 label {
     cursor: pointer;
     font-size: 18px;
-    padding: 10px;
-    background-color: #1E4258;
     border-radius: 8px;
+    background-color: #1E4258;
+    width: 200px;
+    border: none;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+    width: 180px ;
 }
 
 #percent:checked + label,
 #alpha:checked + label{
     background-color: #265077;
+}
+.indiv-gpa{
+    margin-left: 20px;
 }
 h1{
     font-size: 50px;
