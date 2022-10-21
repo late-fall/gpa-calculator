@@ -2,27 +2,25 @@ html {
     height: 100%;
 }
 body{
-    background: linear-gradient(to right, #141e30, #243b55);
+    background: linear-gradient(to right, #05386B, #18426d);
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
-#output{
-    font-size: 13px;
-}
-span.error{
-    color: red;
-    white-space: nowrap;
-    font-size: 13px;
+.type-output{
+    color: #fff;
+    font-size: 20px;
 }
 .wrapper{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0,0,0, 0.5);
+    background: #022140;
     border-radius: 10px;
     padding: 30px;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    box-shadow: rgb(47, 100, 156) 0px 20px 30px -10px;
+    line-height: 45px;
+    font-size: 28px;
 }
 
 input{
@@ -35,16 +33,81 @@ input{
 select{
     outline: none;
 }
-#convert-btn, #reset-btn{
+select:focus {
+    background-color: #265077;
+}
+#convert-btn,  #add-btn, #reset-btn{
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid white;
     background: none;
     cursor: pointer;
 }
+#convert-btn:hover,  #add-btn:hover, #reset-btn:hover{
+    background-color: #265077;
+}
+#convert-btn:active,  #add-btn:active, #reset-btn:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+.grade {
+    width: 75px;;
+    font-size: 24px;
+    text-align: center;
+}
 .grade-row {
     display: flex;
+    margin-top: 12px;
 }
 .grade-choice {
     display: none;
+}
+select {
+  background-color: #1E4258;
+  color: white;
+  padding: 12px;
+  width: 300px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+  border-radius: 8px;
+  width: 100%;
+}
+
+select option {
+    padding: 30px;
+}
+
+.credit {
+    margin-left: 20px;
+    width: 280px;
+}
+.buttons {
+    display: flex;
+    justify-content:space-between;
+    margin-top: 15px;;
+}
+input[type="radio"]{
+    display: none;
+}
+
+label {
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
+    background-color: #1E4258;
+    border-radius: 8px;
+}
+
+#percent:checked + label,
+#alpha:checked + label{
+    background-color: #265077;
+}
+h1{
+    font-size: 50px;
 }

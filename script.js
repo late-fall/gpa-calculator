@@ -1,6 +1,9 @@
-let convert = document.getElementById('convert-btn');
-let univ = document.getElementById('univ-type');
-let gradeRow = document.querySelector('.grade-row');
+const convert = document.getElementById('convert-btn');
+const reset = document.getElementById('reset-btn');
+const gradeRow = document.querySelector('.grade-row');
+const row = document.querySelector('.row');
+const univ = document.getElementById('univ-type');
+
 let numbers = document.getElementById('course-numbers');
 let gradeType = '';
 const radioBtns = document.querySelectorAll('input[name="grade-type"]');
@@ -11,21 +14,20 @@ univ.addEventListener('change', () => {
         document.querySelector(".grade-choice").style.display = "initial";
     }
     else if (univType == "3" || univType== "6"){
-        document.querySelector(".grade").placeholder = "Enter Percentage(%) Grade";
-        gradeType = 'pct';
+        document.querySelector(".type-output").innerHTML = "Enter Percentage(%) Grade";
     }
     else if (univType == "7" || univType== "8" || univType == "9"){
-        document.querySelector(".grade").placeholder = "Enter Alpha Grade";
-        gradeType = 'alpha';
+        document.querySelector(".type-output").innerHTML = "Enter Alphabetical(ABC) Grade";
     }
+    univ.disabled = true;
 });
 
 numbers.addEventListener('change', () => {
     const coursesTaken = numbers.value;
     for (let i = 0; i < coursesTaken -1 ; i++){
-        document.querySelector('.row').innerHTML += 
-        '<div class="grade-row">' + gradeRow.innerHTML + '</div>';
+        row.innerHTML += '<div class="grade-row">' + gradeRow.innerHTML + '</div>';
     }
+    numbers.disabled = true;
 });
 
 convert.addEventListener('click', function(){
@@ -65,6 +67,7 @@ convert.addEventListener('click', function(){
             break;
         default:
             alert('Error!');
+    }
 
     function calc_alpha(){
         let total = 0;
@@ -130,6 +133,7 @@ convert.addEventListener('click', function(){
     function calc_pct3(){
         let total = 0;
         let gpa = '';
+        let num = 0;
         document.querySelectorAll(".grade").forEach((item)=>{
             if (item.value >= 90){
                 gpa = 4.0;
@@ -181,6 +185,7 @@ convert.addEventListener('click', function(){
     function calc_pct4(){
         let total = 0;
         let gpa = '';
+        let num = 0;
         document.querySelectorAll(".grade").forEach((item)=>{
             if (item.value >= 93){
                 gpa = 4.0;
@@ -229,9 +234,10 @@ convert.addEventListener('click', function(){
         let avg = (total / num).toFixed(2);
         document.getElementById('output').innerHTML = 'Your average GPA is ' + avg;
     }
-    function calc_pct4(){
+    function calc_pct6(){
         let total = 0;
         let gpa = '';
+        let num = 0;
         document.querySelectorAll(".grade").forEach((item)=>{
             if (item.value >= 94){
                 gpa = 4.0;
@@ -271,5 +277,19 @@ convert.addEventListener('click', function(){
         let avg = (total / num).toFixed(2);
         document.getElementById('output').innerHTML = 'Your average GPA is ' + avg;
     }
+});
+
+reset.addEventListener('click', function(){
+    document.querySelector(".type-output").innerHTML = '';
+    univ.value = "none";
+    numbers.value = "1";
+    gradeType = '';
+    for (const radiobtn of radioBtns){
+        radiobtn.checked = false;
     }
+    row.innerHTML = '';
+    row.innerHTML += '<div class="grade-row">' + gradeRow.innerHTML + '</div>';
+    document.getElementById('output').innerHTML = '';
+    univ.disabled = false;
+    numbers.disabled = false;
 });

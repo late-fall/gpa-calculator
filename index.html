@@ -10,10 +10,10 @@
 </head>
 <body>
     <div class="wrapper">
+        <h1>GPA calculator</h1>
         <p>
-            Select your University.<br>
             <select id="univ-type">
-                <option value="none">Select One</option>
+                <option value="none">Select Your University</option>
                 <option value="7">Acadia</option>
                 <option value="7">Alberta</option>
                 <option value="3">Algoma</option>
@@ -75,9 +75,18 @@
                 <option value="9">York</option>
             </select>
         </p>
+
+        <div class="grade-choice">
+            <input type="radio" name="grade-type" id="percent" value="pct">
+            <label for="percent">Percent (%) Grade</label>
+            <input type="radio" id="alpha" name="grade-type" value="alpha">
+            <label for="alpha">Alphabetical grade</label>
+        </div>
+
+
         <div class="course-numbers">
-            <p>Select number of courses taken.</p>
             <select id="course-numbers">
+                <option value="none">Number of courses taken</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -102,15 +111,11 @@
             </select>
         </div>
 
-        <div class="grade-choice">
-            <input type="radio" name="grade-type" id="percent" value="pct">
-            <label for="percent">Percentage (%)</label>
-            <input type="radio" id="alpha" name="grade-type" value="alpha">
-            <label for="alpha">Letter grade</label>
-        </div>
+        <p class="type-output"></p>
+
         <div class="row">
             <div class="grade-row">
-                <input type="text" class="grade" placeholder="Grade">
+                <input type="text" class="grade" placeholder="Grade" maxlength="3">
                 <select class="credit">
                     <option value="2">6 credits (1 full course) </option>
                     <option value="1">3 credits (1 half course) </option>
@@ -119,8 +124,11 @@
                 <br>
             </div>
         </div>
-        <button id="convert-btn">Convert</button>
-        <button id="reset-btn">Reset</button>
+        <div class="buttons">
+            <button id="convert-btn">Convert</button>
+            <button id="add-btn">Add a course</button>
+            <button id="reset-btn">Reset</button>
+        </div>
         <p id="output"></p>
     </div>
 </body>
