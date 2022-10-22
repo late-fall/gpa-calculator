@@ -37,6 +37,10 @@ numbers.addEventListener('change', () => {
 
 convert.addEventListener('click', function(){
     const uni = document.getElementById('univ-type').value;
+    let total = 0;
+    let gpa = '';
+    let num = 0;
+
     if (uni == "3" || uni == "6"){
         gradeType = 'pct';
     }
@@ -75,9 +79,6 @@ convert.addEventListener('click', function(){
     }
 
     function calc_alpha(){
-        let total = 0;
-        let gpa = '';
-        let num = 0;
         document.querySelectorAll(".grade").forEach((item)=>{
             switch(item.value.toUpperCase()){
                 case 'A+':
@@ -127,18 +128,16 @@ convert.addEventListener('click', function(){
                 default:
                     gpa = 0.0;
             }
-            item.nextElementSibling.nextElementSibling.innerHTML = gpa.toFixed(2);
             let creditVal = parseInt(item.nextElementSibling.value);
+            item.parentNode.innerHTML = 
+            '<div class="indiv-gpa"> &#8226 ' + item.value.toUpperCase() + ' is ' +gpa.toFixed(2) + ' in GPA grade' +'</div>';
             num += creditVal;
             total += gpa * creditVal;
         });
         let avg = (total / num).toFixed(2);
-        document.getElementById('output').innerHTML = 'Your average GPA is ' + avg;
+        document.getElementById('output').innerHTML = 'Your average GPA is <div class="gpatext">' + avg;
     }
     function calc_pct3(){
-        let total = 0;
-        let gpa = '';
-        let num = 0;
         document.querySelectorAll(".grade").forEach((item)=>{
             if (item.value >= 90){
                 gpa = 4.0;
@@ -179,18 +178,16 @@ convert.addEventListener('click', function(){
             else{
                 gpa = 0;
             }            
-            item.nextElementSibling.nextElementSibling.innerHTML = gpa.toFixed(2);
             let creditVal = parseInt(item.nextElementSibling.value);
+            item.parentNode.innerHTML = 
+            '<div class="indiv-gpa">' + item.value.toUpperCase() + '% is ' +gpa.toFixed(2) + ' in GPA grade' +'</div>';
             num += creditVal;
             total += gpa * creditVal;
         });
         let avg = (total / num).toFixed(2);
-        document.getElementById('output').innerHTML = 'Your average GPA is ' + avg;
+        document.getElementById('output').innerHTML = 'Your average GPA is <div class="gpatext">' + avg;
     }
     function calc_pct4(){
-        let total = 0;
-        let gpa = '';
-        let num = 0;
         document.querySelectorAll(".grade").forEach((item)=>{
             if (item.value >= 93){
                 gpa = 4.0;
@@ -231,18 +228,16 @@ convert.addEventListener('click', function(){
             else{
                 gpa = 0;
             }            
-            item.nextElementSibling.nextElementSibling.innerHTML = gpa.toFixed(2);
             let creditVal = parseInt(item.nextElementSibling.value);
+            item.parentNode.innerHTML = 
+            '<div class="indiv-gpa">' + item.value.toUpperCase() + ' is ' +gpa.toFixed(2) + '% in GPA grade' +'</div>';
             num += creditVal;
             total += gpa * creditVal;
         });
         let avg = (total / num).toFixed(2);
-        document.getElementById('output').innerHTML = 'Your average GPA is ' + avg;
+        document.getElementById('output').innerHTML = 'Your average GPA is <div class="gpatext">' + avg;
     }
     function calc_pct6(){
-        let total = 0;
-        let gpa = '';
-        let num = 0;
         document.querySelectorAll(".grade").forEach((item)=>{
             if (item.value >= 94){
                 gpa = 4.0;
@@ -274,14 +269,16 @@ convert.addEventListener('click', function(){
             else{
                 gpa = 0;
             }            
-            item.nextElementSibling.nextElementSibling.innerHTML = gpa.toFixed(2);
             let creditVal = parseInt(item.nextElementSibling.value);
+            item.parentNode.innerHTML = 
+            '<div class="indiv-gpa">' + item.value.toUpperCase() + ' is ' +gpa.toFixed(2) + '% in GPA grade' +'</div>';
             num += creditVal;
             total += gpa * creditVal;
         });
         let avg = (total / num).toFixed(2);
-        document.getElementById('output').innerHTML = 'Your average GPA is ' + avg;
+        document.getElementById('output').innerHTML = 'Your average GPA is <div class="gpatext">' + avg;
     }
+    document.querySelector(".type-output").innerHTML = '';
 });
 
 reset.addEventListener('click', function(){
@@ -293,7 +290,9 @@ reset.addEventListener('click', function(){
         radiobtn.checked = false;
     }
     row.innerHTML = '';
-    document.querySelector(".grade-choice-visible").className = "grade-choice";
+    if (document.querySelector("#choice").classList.contains("grade-choice-visible")){
+        document.querySelector("#choice").className = "grade-choice";
+    }
     document.getElementById('output').innerHTML = '';
     univ.disabled = false;
     numbers.disabled = false;
