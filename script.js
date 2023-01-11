@@ -86,13 +86,13 @@ convert.addEventListener('click', function(){
                     break;
                 case 'A':
                     if (uni == '9'){
-                        gpa = 3.9;
+                        gpa = 3.8;
                     }
                     else if (uni == '8'){
                         gpa = 4.0;
                     }
                     else {
-                        gpa = 3.8;
+                        gpa = 3.9;
                     }
                     break;
                 case 'A-':
